@@ -30,6 +30,39 @@ namespace Pago_de_Propiedades
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(textBox1.Text))
+            {
+                leer_propietarios();
+                Form2 f2 = new Form2();
+                Propietarios p = new Propietarios();
+                p.Dpi = textBox1.Text;
+                repetidos();
+                if (encontrar_pro)
+                {
+                    f2.dpi = textBox1.Text;
+                    f2.name = pr[Pr].Nombre;
+                    f2.surname = pr[Pr].Apellido;
+                    textBox1.Clear();
+                    hallarPr = false;
+                    Pr = 0;
+                }
+                else
+                {
+                    f2.dpi = textBox1.Text;
+                    f2.textBox2.Enabled = true;
+                    f2.textBox2.Focus();
+                    f2.textBox3.Enabled = true;
+                    textBox1.Clear();
+                    Pr = 0;
+                }
+                f2.Show();
+                f2.button1.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Porfavor introduzca el Número de DPI");
+            }
+
 
         }
 
@@ -49,24 +82,22 @@ namespace Pago_de_Propiedades
             }
             reader.Close();
 
-            void repetidos()
-            {
-                while (encontrar_pro == false && pr < pro.Count)
-                {
-                    if (pro[pr].Dpi.CompareTo(textBox1.Text) == 0)
-                    {
-                        encontrar_pro = true;
-                    }
-                    else
-                    {
-                        pr++;
-                    }
-                }
-            }
-
         }
 
-
+        void repetidos()
+        {
+            while (encontrar_pro == false && pr < pro.Count)
+            {
+                if (pro[pr].Dpi.CompareTo(textBox1.Text) == 0)
+                {
+                    encontrar_pro = true;
+                }
+                else
+                {
+                    pr++;
+                }
+            }
+        }
 
     }
 }
