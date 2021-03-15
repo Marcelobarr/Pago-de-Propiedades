@@ -25,7 +25,7 @@ namespace Pago_de_Propiedades
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            leer_propietarios();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,11 +40,11 @@ namespace Pago_de_Propiedades
                 if (encontrar_pro)
                 {
                     f2.dpi = textBox1.Text;
-                    f2.name = pr[Pr].Nombre;
-                    f2.surname = pr[Pr].Apellido;
+                    f2.name = pro[pr].Nombre;
+                    f2.surname = pro[pr].Apellido;
                     textBox1.Clear();
-                    hallarPr = false;
-                    Pr = 0;
+                    encontrar_pro = false;
+                    pr = 0;
                 }
                 else
                 {
@@ -53,14 +53,14 @@ namespace Pago_de_Propiedades
                     f2.textBox2.Focus();
                     f2.textBox3.Enabled = true;
                     textBox1.Clear();
-                    Pr = 0;
+                    pr = 0;
                 }
                 f2.Show();
                 f2.button1.Enabled = true;
             }
             else
             {
-                MessageBox.Show("Porfavor introduzca el Número de DPI");
+                MessageBox.Show("Porfavor introduzca su numero de DPI");
             }
 
 
